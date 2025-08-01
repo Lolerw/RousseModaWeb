@@ -1,0 +1,38 @@
+.navigation-bar{
+position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.texto-superior-nav,.estilo-navbar, .estilo-navbar-texto{
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.navigation-bar:hover .texto-superior-nav{
+    background-color: #fbd34c;
+}
+.navigation-bar:hover .estilo-navbar{
+    background-color: white;
+}
+.navigation-bar:hover .estilo-navbar-texto{
+    color: black !important;
+}
+
+.navbar-otras-estilo{
+    background-color: white;
+}
+
+.otras-texto-superior{
+    background-color: #fbd34c;
+}
+
+.otras-navbar-texto{
+    color: black !important;
+}
+nav {
+  border-bottom: 1px solid #ddd; 
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); 
+}
+

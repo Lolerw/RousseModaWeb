@@ -1,0 +1,22 @@
+<div class="catalogo-cont">
+  <div class="catalogo">
+    <div *ngFor="let producto of productosPagina" class="item" [routerLink]="['/DetalleProducto',producto.id]">
+          <img [src]="producto.imagen" alt="producto" />
+          <label> {{ producto.Nombre }}</label>
+          <p><strong>S/. {{ producto.precio }}</strong></p>
+    </div>
+  </div>
+  <div class="paginacion">
+        <button (click)="irPagina(paginaActual - 1)" [disabled]="paginaActual === 1">Anterior</button>
+
+        <span *ngFor="let i of [].constructor(totalPaginas); let index = index">
+          <button
+            [disabled]="paginaActual === index + 1"
+            (click)="irPagina(index + 1)">
+            {{ index + 1 }}
+          </button>
+        </span>
+
+        <button (click)="irPagina(paginaActual + 1)" [disabled]="paginaActual === totalPaginas">Siguiente</button>
+  </div> 
+</div>

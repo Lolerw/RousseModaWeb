@@ -1,0 +1,172 @@
+<div class="politicas-container">
+
+<div class="text-start px-3 mt-4">
+  <a [routerLink]="'/home'" class="text-secondary" style="font-size: smaller; cursor: pointer; text-decoration: none;">
+    INICIO
+  </a>
+  <span class="text-secondary" style="font-size: smaller;"> / TÉRMINOS Y CONDICIONES</span>
+</div>
+
+<!-- recuadros -->
+<div class="row mt-4 px-3">
+    <!-- Sidebar con recuadros -->
+    <div class="col-md-4 mb-3"style="margin-top: 40px;">
+      <div class="d-flex flex-column gap-2">
+        <div 
+          class="opcion-box text-center"
+          [class.activa]="opcionSeleccionada === 'terminos'"
+          (click)="cambiarOpcion('terminos')">
+          Términos y Condiciones
+        </div>
+
+        <div 
+          class="opcion-box text-center"
+          [class.activa]="opcionSeleccionada === 'cambios'"
+          (click)="cambiarOpcion('cambios')">
+          Políticas de cambios y devoluciones
+        </div>
+
+        <div 
+          class="opcion-box text-center"
+          [class.activa]="opcionSeleccionada === 'proceso'"
+          (click)="cambiarOpcion('proceso')">
+          Proceso de compra
+        </div>
+      </div>
+    </div>
+
+<!-- texto dinamico -->
+<div class="col-md-8">
+  <div class="text-center mb-4">
+    <h5 class="fw-semibold text-secondary">Conoce nuestros acuerdos</h5>
+  </div>
+      <div *ngIf="opcionSeleccionada === 'terminos'">
+        <ol class="ps-3">
+          <li>
+            <strong>Información del Producto:</strong>
+            <ul>
+              <li>Todos los productos publicados son fabricados por nosotros, con materiales seleccionados y calidad garantizada.</li>
+              <li>Las imágenes son referenciales y pueden tener ligeras variaciones en tonos debido a la iluminación o pantalla del dispositivo.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Proceso de Compra:</strong>
+            <ul>
+              <li>Al elegir talla, color y modelo, tu pedido se enviará al WhatsApp para coordinar y registrar la orden.</li>
+              <li>El pedido será agendado únicamente después de confirmar el pago completo.</li>
+              <li>La fabricación toma aproximadamente 7 días hábiles, ya que se realiza bajo pedido o tras completar la media (cantidad mínima para producción).</li>
+              <li>Luego del plazo, se realiza el despacho o se coordina el recojo.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Formas de Pago:</strong>
+            <ul>
+              <li>Aceptamos pagos por Yape, Plin y transferencias bancarias.</li>
+              <li>Es responsabilidad del cliente enviar el comprobante y su descripción (nombre, modelo, talla y color) correctamente.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Cambios y Devoluciones:</strong>
+            <ul>
+              <li>No se aceptan cambios ni devoluciones, salvo fallas de fábrica visibles y considerables.</li>
+              <li>El reclamo debe hacerse dentro de los 2 días posteriores a recibir el producto.</li>
+              <li>Se debe enviar fotos y/o videos para evaluación.</li>
+              <li>Si la falla es comprobada, se ofrece descuento en una próxima compra o cambio, según coordinación.</li>
+              <li>En caso el cliente no acepte, se podrá evaluar devolución o reemplazo del producto según disponibilidad.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Envíos y Recojos:</strong>
+            <ul>
+              <li>Realizamos envíos a todo el Perú por Shalom.</li>
+              <li>También puedes recoger en nuestra tienda física en Trujillo de Lunes a Sábado desde las 8 am hasta 8 pm.</li>
+              <li>Previo acuerdo, tu pedido puede ser juntado con futuras compras (por TikTok Live o redes) para facilitar la entrega, siempre y cuando los tiempos lo permitan.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Confidencialidad:</strong>
+            <ul>
+              <li>Toda la información brindada por el cliente es confidencial y solo será usada para gestionar sus pedidos.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <div *ngIf="opcionSeleccionada === 'cambios'">
+        <ol class="ps-3">
+          <li>
+            No realizamos cambios ni devoluciones, excepto en casos de fallas visibles de fábrica.
+            No se aceptan reclamos por detalles mínimos o propios del proceso de fabricación artesanal.
+          </li>
+          <li>
+            <strong>Plazo para reclamos:</strong> El cliente cuenta con un máximo de 5 días calendario desde la fecha de pago
+            para presentar su reclamo. Pasado este plazo, no se aceptarán solicitudes de cambio o devolución.
+          </li>
+          <li>
+            <strong>Revisión del caso:</strong> Para iniciar el proceso, el cliente deberá enviar al WhatsApp:
+            <ul>
+              <li>Video y fotos claras del producto desde distintos ángulos.</li>
+              <li>Detalle del problema observado.</li>
+              <li>Comprobante de pago.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Evaluación del reclamo:</strong> El equipo de RousseModa revisará cuidadosamente la evidencia. Si se determina que existe una falla real de fabricación, se ofrecerán dos alternativas:
+            <ul>
+              <li><strong>a.</strong> Descuento en una próxima compra, como forma de compensación.</li>
+              <li><strong>b.</strong> Cambio o devolución del producto, solo si el daño es significativo y el cliente así lo solicita.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Condiciones para el cambio/devolución:</strong>
+            <ul>
+              <li>El producto debe estar sin uso y en perfectas condiciones, tal como fue entregado.</li>
+              <li>El cliente deberá devolver el producto usando la agencia Shalom o según coordinación previa.</li>
+              <li>Los costos de envío por devolución corren por cuenta del cliente, excepto si el error es atribuible a RousseModa.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Casos no válidos para reclamo:</strong>
+            <ul>
+              <li>Desperfectos causados por mal uso, golpes o desgaste natural.</li>
+              <li>Cambios por talla, modelo o color una vez recibido el producto.</li>
+              <li>Productos con descuentos especiales o adquiridos en dinámicas sorpresa.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <div *ngIf="opcionSeleccionada === 'proceso'">
+        <ol class="ps-3">
+          <li>
+            <strong>Confirmación de pedido:</strong> Una vez el cliente seleccione el producto, color y talla en la página web, será redirigido al WhatsApp de atención para registrar su orden de forma personalizada.
+          </li>
+          <li>
+            <strong>Validación y pago:</strong> El pedido será agendado solo después de haber confirmado el pago total. Sin este paso, la orden no se considerará registrada oficialmente.
+          </li>
+          <li>
+            <strong>Tiempo de espera:</strong> Al trabajar bajo un sistema de producción por medias, el pedido ingresará a fase de fabricación, y el tiempo estimado de entrega será de aproximadamente 7 días hábiles.
+            <br><span class="text-muted">Importante: Este plazo puede variar dependiendo del avance de producción y disponibilidad del modelo.</span>
+          </li>
+          <li>
+            <strong>Fabricación por media:</strong> La producción inicia cuando se completa la media docena del modelo solicitado. El cliente será notificado si hubiera algún retraso excepcional.
+          </li>
+          <li>
+            <strong>Coordinación de entrega:</strong> Una vez finalizado el proceso de fabricación:
+            <ul>
+              <li>El equipo de RousseModa se comunicará vía WhatsApp para coordinar el envío (a través de Shalom) o el recojo en tienda (solo Trujillo).</li>
+              <li>El cliente debe brindar datos completos para el despacho: nombre, DNI y sede Shalom.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Cambios y cancelaciones:</strong> Una vez iniciado el proceso de fabricación, no se aceptan cancelaciones ni cambios de modelo, color o talla, ya que cada par es fabricado bajo pedido.
+          </li>
+          <li>
+            <strong>Acumulación de compras:</strong> En caso el cliente tenga compras anteriores realizadas por otros canales (live, tienda física u otros), su envío podrá ser unificado previa coordinación directa vía WhatsApp. Esta opción está sujeta a disponibilidad de tiempos y estado de preparación de cada pedido.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+</div>

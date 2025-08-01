@@ -1,0 +1,14 @@
+# Angular
+node_modules/
+dist/
+tmp/
+.angular/
+out-tsc/
+coverage/
+.idea/
+.vscode/
+.env
+.DS_Store
+npm-debug.log
+yarn-error.log
+package-lock.json

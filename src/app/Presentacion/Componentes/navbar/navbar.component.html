@@ -1,0 +1,37 @@
+    <div (mouseenter) = "changeTo('hover')" (mouseleave) = "changeTo('normal')" class="navigation-bar">
+        <!-- texto superior -->
+        <!-- TEXTO SUPERIOR -->
+        <div [class.otras-texto-superior]="!rutaEsInicio || scrollActivo()" class="texto-superior-nav">
+            <div class="text-center text-white fw-bold text-uppercase small mb-1" style="margin-top: 0;">
+            FABRICANTES DIRECTOS DE CALZADO
+            </div>
+            <!-- Linea divisora superior -->
+            <div class="border-top border-white mt-1 texto-superior-nav" style="opacity: 0.7;"></div>
+        </div>
+        <!-- NAVBAR DESKTOP -->
+        <nav [class.navbar-otras-estilo]="!rutaEsInicio || scrollActivo()" class="d-none d-lg-flex justify-content-center align-items-center gap-4 py-2 estilo-navbar">
+            <a [class.otras-navbar-texto]="!rutaEsInicio || scrollActivo()" routerLink="/home" routerLinkActive="active" class="text-white text-decoration-none fw-bold estilo-navbar-texto">INICIO</a>
+            <a [class.otras-navbar-texto]="!rutaEsInicio || scrollActivo()" routerLink="/nosotros" routerLinkActive="active" fragment="seccion-nosotros" class="text-white text-decoration-none fw-bold estilo-navbar-texto">NOSOTROS</a>
+        <!-- <div class="imagen-hover"></div> -->
+            <img 
+            [src]="imagenActual"
+            alt="Logo" 
+            style="height: 70px;"
+            >
+            <a [class.otras-navbar-texto]="!rutaEsInicio || scrollActivo()" routerLink="/catalogo" routerLinkActive="active" class="text-white text-decoration-none fw-bold estilo-navbar-texto">CATÁLOGO</a>
+            <a [class.otras-navbar-texto]="!rutaEsInicio || scrollActivo()" [routerLink]="['/nosotros']" fragment="seccion-canales" class="nav-link text-white text-decoration-none fw-bold estilo-navbar-texto">CANALES</a>
+        </nav>
+        <!-- NAVBAR MÓVIL -->
+        <nav [class.navbar-otras-estilo]="!rutaEsInicio || scrollActivo()" class="d-flex d-lg-none justify-content-between align-items-center w-100 px-3 estilo-navbar">
+        <img 
+        [src]="imagenActual" 
+        alt="Logo" 
+        style="height: 50px;"
+        >
+        <button [class.otras-navbar-texto]="!rutaEsInicio || scrollActivo()" class="btn text-white estilo-navbar-texto" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+            <i class="bi bi-list" style="font-size: 2rem;"></i>
+        </button>
+        </nav>
+        <!-- línea blanca inferior -->
+        <div class="border-top border-white mb-3" style="opacity: 0.7;"></div>
+    </div>

@@ -1,0 +1,120 @@
+
+<div class="DetalleProducto">
+    
+    <div class="img-gallery">
+        <div class="tittle">
+            <label >INICIO / CATÁLOGO /  <label id="product_name" class="product_name"> {{producto?.Nombre}}</label></label>
+            
+        </div>
+        <div class="img-container">
+            
+            <div class="images">
+                <img *ngFor="let imagen of imagenes" [src]="imagen.URL" alt="Imagen" class="mini-img" (click)="cambiarImagen(imagen.URL)"/>
+            </div>
+            <div class="main-img">
+                <img class="m-img" [src]="mainImageUrl" alt="">
+            </div>
+        </div>
+    </div>
+    <div  class="information">
+        <h1 class="p_tittle" id="product_name">{{producto?.Nombre}}</h1>
+        <p class="p_price">S/. {{ producto?.precio | number:'1.2-2' }}</p>
+        <hr class="separador">
+        <div class="size_container">
+            <label class="tittle_label">TALLAS</label>
+            <div class="size_actions">
+                <img class="ruler-icon" src="assets/images/143207.png" alt="Guía de Tallas">
+                <button (click)="mostrarGuia = true" class="btn_guia">Guía de Tallas</button>
+            </div>
+            
+        </div>
+        <div class="tallas">
+            <div class="talla" *ngFor="let talla of [35,36,37,38,39]">
+                {{ talla }}
+            </div>
+        </div>
+        
+        <div class="color_container">
+            <label class="tittle_label">COLORES</label>
+            <div class="colores">
+                <div class="color" 
+                    *ngFor="let color of colores"
+                    [style.backgroundColor]="color.hexadecimal">
+                </div>
+            </div>
+        </div>
+        <div class="description_container">
+            <label class="tittle_label">DESCRIPCIÓN</label>
+            <button class="btn_more" id="btn_description" (click)="Showdescription()">
+                {{ showDescription ? '-' : '+' }}
+            </button>
+        </div>
+        <div class="description" id="description" [class.show]="showDescription">
+            <label>{{producto?.Descripcion}}</label>
+        </div>
+        <hr class="separador">
+        <div class="details_container">
+            <label  class="tittle_label">DETALLE DE COMPRA</label>
+            <button class="btn_more" id="btn_details" (click)="Showdetails()">
+                 {{ showDetails ? '-' : '+' }}
+            </button>
+        </div>
+        <div class="details" [class.show]="showDetails">
+            <label for="">
+                Para conocer el proceso de compra 
+                <a class="link" href="politicas">click aquí</a>
+            </label>
+            
+        </div>
+        <hr class="separador">
+        <div class="refund_container">
+            <label class="tittle_label">CAMBIOS Y DEVOLUCIONES</label>
+            <button class="btn_more" id="btn_details" (click)="Showrefund()">
+                 {{ showRefund ? '-' : '+' }}
+            </button>
+        </div>
+        <div class="refund" [class.show]="showRefund">
+            <label for="">
+                Conoce nuestras políticas 
+                <a class="link" href="politicas">click aquí</a>
+            </label>
+            
+        </div>
+        <hr class="separador">
+        <a href="https://wa.me/51908788470" class="btn_buy" target="_blank" rel="noopener noreferrer">
+        COMPRA AQUÍ
+        </a>
+
+    </div>
+</div>
+<div class="modal-overlay" *ngIf="mostrarGuia" (click)="cerrarModal($event)">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>Guía de Tallas <span class="cerrar" (click)="mostrarGuia = false">×</span></h2>
+    <table>
+      <tr>
+        <th>Talla</th>
+        <th>Medida de pie en CM</th>
+      </tr>
+      <tr>
+        <td>35</td>
+        <td>22,5</td>
+      </tr>
+      <tr>
+        <td>36</td>
+        <td>23,5</td>
+      </tr>
+      <tr>
+        <td>37</td>
+        <td>24</td>
+      </tr>
+      <tr>
+        <td>38</td>
+        <td>25</td>
+      </tr>
+      <tr>
+        <td>39</td>
+        <td>25,5</td>
+      </tr>
+    </table>
+  </div>
+</div>
