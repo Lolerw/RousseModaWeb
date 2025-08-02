@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
 export class CatalogoComponent implements OnInit{
   productos: Producto[] = [];
   producto_clickeado?: Producto;
-  productosPagina: Producto[] = []; // productos visibles por página
+  productosPagina: Producto[] = []; 
   paginaActual: number = 1;
   porPagina: number = 16;
   constructor(private ExcService: CatalogoExcService) {}
@@ -24,7 +24,7 @@ export class CatalogoComponent implements OnInit{
   ngOnInit(): void {
     this.ExcService.getProductos().subscribe(data => {
       this.productos = data;
-      console.log('Datos cargados:', this.productos); // <- Aquí sí se mostrará
+      //console.log('Datos cargados:', this.productos); 
       this.actualizarPagina();
     });
   }

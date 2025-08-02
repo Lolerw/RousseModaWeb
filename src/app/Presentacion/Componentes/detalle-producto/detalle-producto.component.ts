@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component,AfterViewInit} from '@angular/core';
 import { Router,ActivatedRoute  } from '@angular/router';
 import { CatalogoExcService, Color } from '../../../Service/Catalogo/catalogo-exc.service';
 import { CommonModule } from '@angular/common';
 import { Producto, Imagen } from '../../../Service/Catalogo/catalogo-exc.service';
+declare var bootstrap: any;
 @Component({
   selector: 'app-detalle-producto',
   standalone: true,
@@ -10,7 +11,7 @@ import { Producto, Imagen } from '../../../Service/Catalogo/catalogo-exc.service
   templateUrl: './detalle-producto.component.html',
   styleUrl: './detalle-producto.component.css'
 })
-export class DetalleProductoComponent {
+export class DetalleProductoComponent implements AfterViewInit{
   producto?: Producto;
   imagenes?: Imagen[];
   colores?: Color[];
@@ -33,9 +34,16 @@ export class DetalleProductoComponent {
   Showrefund() {
     this.showRefund = !this.showRefund;
   }
-  cambiarImagen(url: string): void {
-    this.mainImageUrl = url;
+  cambiarImagen(url: string, index: number): void {
+  this.mainImageUrl = url;
+
+  const carouselElement = document.getElementById('carouselIMG2');
+  if (carouselElement) {
+    // @ts-ignore
+    const carousel = bootstrap.Carousel.getOrCreateInstance(carouselElement);
+    carousel.to(index + 1);
   }
+}
   cerrarModal(event: MouseEvent) {
     this.mostrarGuia = false;
   }
@@ -62,5 +70,15 @@ export class DetalleProductoComponent {
       });
       
     }
+  }
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      const el = document.getElementById('carouselIMG');
+      if (el) {
+        const carousel = bootstrap.Carousel.getOrCreateInstance(el);
+        carousel.pause(); 
+        carousel.cycle(); 
+      }
+    }, 0); 
   }
 }
