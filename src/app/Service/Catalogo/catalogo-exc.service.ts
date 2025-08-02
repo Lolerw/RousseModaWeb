@@ -33,7 +33,7 @@ export class CatalogoExcService {
 
   getProductos(): Observable<Producto[]> {
     return this.http.get(this.Hoja_Calzado, { responseType: 'text' }).pipe(
-      tap(csv => console.log('CSV recibido:', csv)),
+      //tap(csv => console.log('CSV recibido:', csv)),
       map(csv => {
         const parsed = Papa.parse(csv, {
           header: true,
@@ -49,6 +49,33 @@ export class CatalogoExcService {
       })
     );
   }
+  getProductosPaginado(pagina: number): Observable<Producto[]> {
+  const itemsPorPagina = 16;
+  const inicio = (pagina - 1) * itemsPorPagina;
+  const fin = pagina * itemsPorPagina;
+
+  return this.http.get(this.Hoja_Calzado, { responseType: 'text' }).pipe(
+    //tap(csv => console.log('CSV recibido:', csv)),
+    map(csv => {
+      const parsed = Papa.parse(csv, {
+        header: true,
+        skipEmptyLines: true
+      });
+
+      const todosLosProductos: Producto[] = parsed.data.map((row: any) => ({
+        id: row['IdModelo'],
+        Nombre: row['Nombre'],
+        precio: parseFloat(row['Precio'].replace(',', '.')),
+        imagen: row['Imagen'],
+        Descripcion:  '',
+        IdColores:'',
+      }));
+
+      // Retorna solo los productos correspondientes a la página solicitada
+      return todosLosProductos.slice(inicio, fin);
+    })
+  );
+}
   getProductoPorId(idBuscado: string): Observable<Producto | undefined> {
     return new Observable(observer => {
       this.http.get(this.Hoja_Calzado, { responseType: 'text' }).subscribe(csv => {

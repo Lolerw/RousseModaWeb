@@ -9,11 +9,64 @@
         <div class="img-container">
             
             <div class="images">
-                <img *ngFor="let imagen of imagenes" [src]="imagen.URL" alt="Imagen" class="mini-img" (click)="cambiarImagen(imagen.URL)"/>
+                <img *ngFor="let imagen of imagenes ; let i = index" [src]="imagen.URL" alt="Imagen" class="mini-img" (click)="cambiarImagen(imagen.URL,i)"/>
+                
             </div>
             <div class="main-img">
-                <img class="m-img" [src]="mainImageUrl" alt="">
+                
+                <div id="carouselIMG2" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div 
+                        class="carousel-item active" >
+                        <img [src]="mainImageUrl" class="d-block w-100" alt="Imagen" style="width: 100%; height: 100%;">
+                        </div>
+                        <div 
+                        class="carousel-item" 
+                        *ngFor="let img of imagenes; let i = index" 
+                        >
+                        
+                        <img [src]="img.URL" class="d-block w-100" alt="Imagen" style="width: 100%; height:100%;">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselIMG2" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselIMG2" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
             </div>
+        </div>
+
+        <div id="carouselIMG" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button 
+                    *ngFor="let i of [].constructor((imagenes?.length || 0) + 1); let index = index"
+                    type="button"
+                    data-bs-target="#carouselIMG"
+                    [attr.data-bs-slide-to]="index"
+                    [class.active]="index === 0"
+                    [attr.aria-current]="index === 0 ? 'true' : null">
+                </button>
+            </div>
+
+            <div class="carousel-inner">
+                <div 
+                class="carousel-item active" >
+                <img [src]="mainImageUrl" class="d-block w-100" alt="Imagen">
+                </div>
+                <div 
+                class="carousel-item" 
+                *ngFor="let img of imagenes; let i = index" 
+                >
+                
+                <img [src]="img.URL" class="d-block w-100" alt="Imagen">
+                </div>
+            </div>
+            
         </div>
     </div>
     <div  class="information">

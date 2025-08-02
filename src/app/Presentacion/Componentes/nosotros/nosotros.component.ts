@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener,OnInit } from '@angular/core';
 import { ENLACES } from '../../../config/enlaces.config';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CanalesComponent } from './contenido/canales/canales.component';
@@ -17,7 +17,10 @@ export class NosotrosComponent implements OnInit {
   idNosotros = ENLACES.idVideoNosotrosYT;
   videLocalNosotos = '/assets/VIDEO_PRUEBA.mp4'
   videoNosotros: SafeResourceUrl;
-
+  sections = ['seccion-nosotros','seccion-canales','seccion-mapa'];
+  currentIndex = 0;
+  scrolling = false;
+  
   constructor(private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
     private viewportScroller: ViewportScroller
@@ -35,4 +38,73 @@ export class NosotrosComponent implements OnInit {
       }
     });
   }
+  // ngAfterViewInit(): void {
+  //   const elementos = document.querySelectorAll('.animar-slide-up');
+  //   const observer = new IntersectionObserver(entries => {
+  //     entries.forEach((entry,index) => {
+  //       if (entry.isIntersecting) {
+  //         const el = entry.target as HTMLElement;
+  //         el.style.animationDelay = `${index * 0.3}s`; 
+  //         el.classList.add('visible');
+  //         observer.unobserve(entry.target); // Solo se anima una vez
+  //       }
+  //     });
+  //   }, {
+  //     threshold: 0.1
+  //   });
+
+  //   elementos.forEach(el => observer.observe(el));
+  // }
+  ngAfterViewInit(): void {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.3
+    });
+
+    const elementos = document.querySelectorAll('.observar');
+    elementos.forEach(el => observer.observe(el));
+  }
+
+  // @HostListener('window:wheel', ['$event'])
+  // onScroll(event: WheelEvent) {
+  //   if (this.scrolling) return;
+
+  //   this.scrolling = true;
+  //   if (event.deltaY > 0) {
+  //     this.scrollToNext();
+  //   } else {
+  //     this.scrollToPrevious();
+  //   }
+
+  //   setTimeout(() => {
+  //     this.scrolling = false;
+  //   }, 500); 
+  // }
+
+  // scrollToNext() {
+  //   if (this.currentIndex < this.sections.length - 1) {
+  //     this.currentIndex++;
+  //     this.scrollToSection(this.sections[this.currentIndex]);
+  //   }
+  // }
+
+  // scrollToPrevious() {
+  //   if (this.currentIndex > 0) {
+  //     this.currentIndex--;
+  //     this.scrollToSection(this.sections[this.currentIndex]);
+  //   }
+  // }
+
+  // scrollToSection(id: string) {
+  //   const el = document.getElementById(id);
+  //   if (el) {
+  //     el.scrollIntoView({ behavior: 'smooth' });
+  //   }
+  // }
 }

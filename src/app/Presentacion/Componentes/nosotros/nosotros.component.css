@@ -1,0 +1,31 @@
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+html, body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+section {
+  scroll-snap-align: start;
+  /* align-items: center;
+  justify-content: center; */
+}
+/* Clase base para ocultar */
+.animar-slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Clase que se activa cuando entra en el viewport */
+.animar-slide-up.visible {
+  animation: slideUp 3s ease forwards;
+}

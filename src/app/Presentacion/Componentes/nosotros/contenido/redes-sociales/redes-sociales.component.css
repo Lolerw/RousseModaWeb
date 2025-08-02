@@ -37,3 +37,22 @@
   filter: grayscale(0%);
   transform: scale(1.2);
 }
+/* ANIMACIONES */
+@keyframes slideUp{
+    from{
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.animar-slide-up{
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+}
+.animar-slide-up.visible{
+  animation: slideUp 0.6s ease-out forwards;
+}

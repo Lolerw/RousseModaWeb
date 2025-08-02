@@ -1,3 +1,7 @@
+.mapa{
+  /* min-height: 100vh; */
+  padding-block: 2rem;
+}
 .background-color{
   background-color: #F1F1F1;
 }
@@ -37,6 +41,9 @@ iframe{
   flex-shrink: 0;
 }
 @media (max-width: 1041px) {
+  .mapa{
+    padding-block: 2rem;
+  }
   section.container{
     flex-wrap: wrap;
   }
@@ -52,6 +59,7 @@ iframe{
     font-weight: 700;
   }
   .map-container{
+    max-height: 450px !important;
     display: flex;
     flex-direction: column;
     align-items: center !important;
@@ -59,5 +67,83 @@ iframe{
   }
   .title-mapa{
     font-size: 1.6rem;
+    margin-bottom: 0.5rem;
   }
+}
+
+/* ANIMACIONES */
+@keyframes slideUp {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideDown {
+  0% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideLeft {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideRight{
+    from{
+        transform: translateX(-40px);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Clase base para ocultar */
+.animar-slide-up {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.6s ease-out;
+}
+.animar-slide-up.visible{
+    animation: slideUp 0.6s ease-out forwards;
+}
+.animar-slide-down {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.6s ease-out;
+}
+.animar-slide-down.visible{
+    animation: slideDown 0.6s ease-out forwards;
+}
+.animar-slide-left {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.6s ease-out;
+}
+.animar-slide-left.visible{
+    animation: slideLeft 0.6s ease forwards;
+}
+.animar-slide-right{
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 0.6s ease-out;
+
+}
+.animar-slide-right.visible{
+    animation: slideRight 0.6s ease forwards;
 }
