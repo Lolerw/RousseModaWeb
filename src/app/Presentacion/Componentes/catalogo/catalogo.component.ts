@@ -17,7 +17,7 @@ export class CatalogoComponent implements OnInit{
   paginaActual: number = 1;
   porPagina: number = 16;
   constructor(private ExcService: CatalogoExcService) {}
-
+  cargando: boolean = true;
   get totalPaginas(): number {
   return Math.ceil(this.productos.length / this.porPagina);
   }
@@ -26,6 +26,7 @@ export class CatalogoComponent implements OnInit{
       this.productos = data;
       //console.log('Datos cargados:', this.productos); 
       this.actualizarPagina();
+      this.cargando = false;
     });
   }
   actualizarPagina() {

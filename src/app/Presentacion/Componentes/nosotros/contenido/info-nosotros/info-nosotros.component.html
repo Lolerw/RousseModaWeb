@@ -1,12 +1,25 @@
 <section class="contenedor-nosotros">
     <div class = "video-overlay"></div>
-    <video  class="responsive-video user-select-none" 
-    [src]="videLocalNosotos" 
-    autoplay
-    [muted] = "true"
-    loop 
-    playsinline 
-    preload="auto"></video>
+    <div class="video-container">
+        <video  
+            #video1
+            class="video-fade" 
+            [class.video-visible] = "isVideo1Visible" 
+            autoplay
+            [muted] = "true"
+            playsinline
+            (ended)="onVideoEnded()" 
+        ></video>
+        <video  
+            #video2
+            class="video-fade" 
+            [class.video-visible] = "!isVideo1Visible" 
+            autoplay
+            [muted] = "true"
+            playsinline
+            (ended)="onVideoEnded()"
+        ></video>
+    </div>
     <article class="contenedor-texto animar-slide-up observar">
         <div class="fw-bold title-nosotras">
             SOBRE NOSOTRAS

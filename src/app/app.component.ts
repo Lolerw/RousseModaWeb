@@ -7,11 +7,12 @@ import { NavbarComponent } from './Presentacion/Componentes/navbar/navbar.compon
 import { MobilNavBarComponent } from './Presentacion/Componentes/mobil-nav-bar/mobil-nav-bar.component';
 import { FooterComponent } from './Presentacion/Componentes/footer/footer.component';
 import { PoliticasComponent } from './Presentacion/Componentes/politicas/politicas.component';
+import { BotonWspComponent } from './Presentacion/Componentes/boton-wsp/boton-wsp.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,RouterModule,CatalogoComponent, HomeComponent, NavbarComponent, MobilNavBarComponent,FooterComponent, PoliticasComponent],
+  imports: [RouterOutlet,RouterModule,CatalogoComponent, HomeComponent, NavbarComponent, MobilNavBarComponent,FooterComponent, PoliticasComponent,BotonWspComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

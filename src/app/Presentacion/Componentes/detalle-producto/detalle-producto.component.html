@@ -3,17 +3,25 @@
     
     <div class="img-gallery">
         <div class="tittle">
-            <label >INICIO / CATÁLOGO /  <label id="product_name" class="product_name"> {{producto?.Nombre}}</label></label>
+            <label>INICIO / CATÁLOGO /
+            <ng-container *ngIf="producto?.Nombre && coloresCargados; else cargandoNombre">
+                <label id="product_name" class="product_name">{{ producto?.Nombre }}</label>
+            </ng-container>
+            <ng-template #cargandoNombre>
+                <span class="skeleton skeleton-text"></span>
+            </ng-template>
+            </label>
             
+        </div>
+        <div class="image-wrapper" *ngIf="imagenCargando && imagenesCargando && !coloresCargados">
+                <div class="skeleton-image" ></div>
         </div>
         <div class="img-container">
             
-            <div class="images">
+            <div class="images" *ngIf="!imagenCargando && !imagenesCargando && coloresCargados">
                 <img *ngFor="let imagen of imagenes ; let i = index" [src]="imagen.URL" alt="Imagen" class="mini-img" (click)="cambiarImagen(imagen.URL,i)"/>
-                
             </div>
-            <div class="main-img">
-                
+            <div class="main-img" *ngIf="!imagenCargando && !imagenesCargando && coloresCargados">
                 <div id="carouselIMG2" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div 
@@ -40,8 +48,8 @@
 
             </div>
         </div>
-
-        <div id="carouselIMG" class="carousel slide" data-bs-ride="carousel">
+        
+        <div id="carouselIMG" class="carousel slide" data-bs-ride="carousel" *ngIf="!imagenCargando && !imagenesCargando && coloresCargados">
             <div class="carousel-indicators">
                 <button 
                     *ngFor="let i of [].constructor((imagenes?.length || 0) + 1); let index = index"
@@ -70,8 +78,16 @@
         </div>
     </div>
     <div  class="information">
-        <h1 class="p_tittle" id="product_name">{{producto?.Nombre}}</h1>
-        <p class="p_price">S/. {{ producto?.precio | number:'1.2-2' }}</p>
+        <ng-container *ngIf="producto?.Nombre && producto?.precio && coloresCargados; else cargandoNombre2">
+            <h1 class="p_tittle" id="product_name">{{producto?.Nombre}}</h1>
+            <p class="p_price">S/. {{ producto?.precio | number:'1.2-2' }}</p>
+        </ng-container>
+        <ng-template #cargandoNombre2>
+            <span class="skeleton skeleton-title"></span>
+            <span class="skeleton skeleton-price"></span>
+        </ng-template>
+        
+        
         <hr class="separador">
         <div class="size_container">
             <label class="tittle_label">TALLAS</label>

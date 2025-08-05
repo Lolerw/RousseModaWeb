@@ -70,8 +70,6 @@ export class CatalogoExcService {
         Descripcion:  '',
         IdColores:'',
       }));
-
-      // Retorna solo los productos correspondientes a la página solicitada
       return todosLosProductos.slice(inicio, fin);
     })
   );

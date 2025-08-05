@@ -1,12 +1,16 @@
 <div class="catalogo-cont">
-  <div class="catalogo">
+  <div class="loader-wrapper" *ngIf="cargando">
+    <div class="custom-loader"></div>
+  </div>
+
+  <div class="catalogo" *ngIf="!cargando">
     <div *ngFor="let producto of productosPagina" class="item" [routerLink]="['/DetalleProducto',producto.id]">
           <img [src]="producto.imagen" alt="producto" />
           <label> {{ producto.Nombre }}</label>
           <p><strong>S/. {{ producto.precio }}</strong></p>
     </div>
   </div>
-  <div class="paginacion">
+  <div class="paginacion" *ngIf="!cargando">
         <button (click)="irPagina(paginaActual - 1)" [disabled]="paginaActual === 1">Anterior</button>
 
         <span *ngFor="let i of [].constructor(totalPaginas); let index = index">
