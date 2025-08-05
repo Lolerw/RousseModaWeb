@@ -17,6 +17,9 @@ export class DetalleProductoComponent implements AfterViewInit{
   colores?: Color[];
   id: string | null = null;
   showDescription = false;
+  imagenCargando: boolean = true;
+  imagenesCargando: boolean = true;
+  coloresCargados: boolean = false;
   mainImageUrl: string = '';
   showDetails = false;
   showRefund = false;
@@ -54,10 +57,13 @@ export class DetalleProductoComponent implements AfterViewInit{
         if (prod) {
           this.producto = prod;
           this.mainImageUrl = this.producto.imagen;
+          
           console.log('Producto encontrado:', this.producto);
+          this.imagenCargando=false;
           this.catalogoService.getColoresPorIds(this.producto.IdColores).subscribe(data => {
             this.colores = data;
             console.log('Colores cargados:', this.colores); 
+            this.coloresCargados=true;
           });
         } else {
           console.error('Producto no encontrado');
@@ -66,7 +72,9 @@ export class DetalleProductoComponent implements AfterViewInit{
       
       this.catalogoService.getImagenesPorId(id).subscribe(data => {
         this.imagenes = data;
+        
         console.log('Datos cargados:', this.imagenes); 
+        this.imagenesCargando=false;
       });
       
     }

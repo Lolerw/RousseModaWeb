@@ -1,9 +1,10 @@
 .catalogo-cont{
-  margin-top: 100px;
+  padding-top: 100px;
   width: 100%;
   min-height: 89.62vh;
   background-color: #e7e4e4;
   padding-bottom: 20px;
+  
 }
 .catalogo {
   
@@ -31,8 +32,7 @@
 
 .item img {
   width: 100%;
-  
-  /*border-radius: 5px;*/
+  border-radius: 5px;
   object-fit: cover;
   height: 300px;
   margin-bottom: 25px;
@@ -50,8 +50,6 @@
 }
 .paginacion {
   text-align: center;
-  
-  
 }
 
 .paginacion button {
@@ -60,6 +58,7 @@
   background-color: #ffffff;
   border: none;
   border-radius: 5px;
+  margin-top: 3px;
   cursor: pointer;
   color: #333333;
 }
@@ -68,4 +67,56 @@
   background-color: #fed44a;
   cursor: default;
   color: #333;
+}
+.loader-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 0;
+  margin-top: 25vh;
+}
+.custom-loader {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  --primary: #FED44A;  
+  --secondary: #959292;
+}
+.custom-loader::after {
+  content: "";
+  grid-area: 1/1;
+  background:
+    radial-gradient(farthest-side, var(--primary) 92%, transparent) 50% 0,
+    radial-gradient(farthest-side, var(--primary) 92%, transparent) 50% 100%,
+    radial-gradient(farthest-side, var(--primary) 92%, transparent) 100% 50%,
+    radial-gradient(farthest-side, var(--primary) 92%, transparent) 0 50%;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  animation: s2 1s infinite;
+}
+.custom-loader::before {
+  content: "";
+  grid-area: 1/1;
+  background:
+    radial-gradient(farthest-side, var(--secondary) 92%, transparent) 50% 0,
+    radial-gradient(farthest-side, var(--secondary) 92%, transparent) 50% 100%,
+    radial-gradient(farthest-side, var(--secondary) 92%, transparent) 100% 50%,
+    radial-gradient(farthest-side, var(--secondary) 92%, transparent) 0 50%;
+  background-size: 8px 8px;
+  background-repeat: no-repeat;
+  animation: s2 1s infinite ;
+  opacity: 0.5; 
+}
+.custom-loader::before {
+  margin: 4px;
+
+  animation-timing-function: linear
+}
+
+@keyframes s2 {
+ 
+  100% {
+    transform: rotate(.5turn)
+  }
 }

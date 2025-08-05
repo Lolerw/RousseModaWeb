@@ -1,9 +1,13 @@
 .navigation-bar{
-position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.animacion-logo:hover{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
 }
 .texto-superior-nav,.estilo-navbar, .estilo-navbar-texto{
     background-color: transparent;

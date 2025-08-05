@@ -15,8 +15,11 @@
         <!-- <div class="imagen-hover"></div> -->
             <img 
             [src]="imagenActual"
-            alt="Logo" 
+            alt="Logo"
+            class="animacion-logo"
             style="height: 70px;"
+            type="button"
+            routerLink="/home"
             >
             <a [class.otras-navbar-texto]="!rutaEsInicio || scrollActivo()" routerLink="/catalogo" routerLinkActive="active" class="text-white text-decoration-none fw-bold estilo-navbar-texto">CATÁLOGO</a>
             <a [class.otras-navbar-texto]="!rutaEsInicio || scrollActivo()" [routerLink]="['/nosotros']" routerLinkActive="active" fragment="seccion-canales" class="nav-link text-white text-decoration-none fw-bold estilo-navbar-texto">CANALES</a>
@@ -25,7 +28,10 @@
         <nav [class.navbar-otras-estilo]="!rutaEsInicio || scrollActivo()" class="d-flex d-lg-none justify-content-between align-items-center w-100 px-3 estilo-navbar">
         <img 
         [src]="imagenActual" 
-        alt="Logo" 
+        alt="Logo"
+        type="button"
+        class="animacion-logo"
+        routerLink="/home"
         style="height: 50px;"
         >
         <button [class.otras-navbar-texto]="!rutaEsInicio || scrollActivo()" class="btn text-white estilo-navbar-texto" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">

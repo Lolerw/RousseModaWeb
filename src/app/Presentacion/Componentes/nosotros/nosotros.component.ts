@@ -38,23 +38,6 @@ export class NosotrosComponent implements OnInit {
       }
     });
   }
-  // ngAfterViewInit(): void {
-  //   const elementos = document.querySelectorAll('.animar-slide-up');
-  //   const observer = new IntersectionObserver(entries => {
-  //     entries.forEach((entry,index) => {
-  //       if (entry.isIntersecting) {
-  //         const el = entry.target as HTMLElement;
-  //         el.style.animationDelay = `${index * 0.3}s`; 
-  //         el.classList.add('visible');
-  //         observer.unobserve(entry.target); // Solo se anima una vez
-  //       }
-  //     });
-  //   }, {
-  //     threshold: 0.1
-  //   });
-
-  //   elementos.forEach(el => observer.observe(el));
-  // }
   ngAfterViewInit(): void {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -64,7 +47,7 @@ export class NosotrosComponent implements OnInit {
         }
       });
     }, {
-      threshold: 0.3
+      threshold: 0.25
     });
 
     const elementos = document.querySelectorAll('.observar');
