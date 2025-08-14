@@ -49,7 +49,7 @@
             </div>
         </div>
         
-        <div id="carouselIMG" class="carousel slide" data-bs-ride="carousel" *ngIf="!imagenCargando && !imagenesCargando && coloresCargados">
+        <div id="carouselIMG" class="carousel slide" data-bs-ride="carousel" >
             <div class="carousel-indicators">
                 <button 
                     *ngFor="let i of [].constructor((imagenes?.length || 0) + 1); let index = index"
@@ -61,10 +61,10 @@
                 </button>
             </div>
 
-            <div class="carousel-inner">
+            <div class="carousel-inner" *ngIf="!imagenCargando && !imagenesCargando && coloresCargados">
                 <div 
                 class="carousel-item active" >
-                <img [src]="mainImageUrl" class="d-block w-100" alt="Imagen">
+                <img [src]="mainImageUrl"  class="d-block w-100" alt="Imagen">
                 </div>
                 <div 
                 class="carousel-item" 
