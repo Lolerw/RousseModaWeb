@@ -1,0 +1,13 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  
+}
+
+@media (max-width: 768px) {
+  .custom-offcanvas {
+    width: 250px !important;
+  }
+}
+
